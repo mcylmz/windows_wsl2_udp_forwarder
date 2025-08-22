@@ -195,9 +195,6 @@ No. It’s a user‑space proxy using normal UDP sockets.
 **Will it reorder or drop packets?**
 It forwards datagrams as‑is. Packet loss can still occur due to OS buffer pressure; keep buffers large and logging minimal.
 
-**Can I forward between different ports?**
-Not in this minimal version; source and destination ports are identical per thread.
-
 ## License
 
 MIT. See `LICENSE`.
