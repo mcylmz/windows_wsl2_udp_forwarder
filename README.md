@@ -40,6 +40,8 @@ This forwarder was developed as part of a robotics project where a LiDAR sensor 
 
 To solve this, I built this Python UDP forwarder. It captures the LiDAR’s UDP packets on Windows and relays them into WSL2 in real time, allowing ROS 2 nodes inside WSL2 to consume the measurements as if they were received natively. This design provides a simple, user‑space solution that requires no admin privileges, custom routes, or Windows firewall hacks, and is reliable enough for continuous LiDAR data streams.
 
+I tested this code using Benewake LiDARs, and it successfully forwarded their UDP measurement streams into WSL2 for ROS 2 processing.
+
 ## How it works
 
 ```mermaid
