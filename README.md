@@ -34,6 +34,12 @@ Some sensors (like 2D/3D LiDARs) stream high‑rate UDP packets to a Windows hos
 * **Bidirectional** (optional): Forwards replies from WSL2 back to the **last** sender observed on the Windows side for each port.
 * **Subnet filter** (optional): Accept only packets from a given CIDR (e.g., your LiDAR network).
 
+## Why this project?
+
+This forwarder was developed as part of a robotics project where a LiDAR sensor is physically connected to a Windows 10 machine. The LiDAR streams high‑rate UDP packets to the Windows adapter, but the robotics software stack (ROS 2) is running inside WSL2. Since WSL2 networking is isolated behind NAT, the LiDAR measurements cannot be accessed directly from Linux without additional routing.
+
+To solve this, I built this Python UDP forwarder. It captures the LiDAR’s UDP packets on Windows and relays them into WSL2 in real time, allowing ROS 2 nodes inside WSL2 to consume the measurements as if they were received natively. This design provides a simple, user‑space solution that requires no admin privileges, custom routes, or Windows firewall hacks, and is reliable enough for continuous LiDAR data streams.
+
 ## How it works
 
 ```mermaid
